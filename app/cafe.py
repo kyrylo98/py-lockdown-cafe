@@ -13,6 +13,9 @@ class Cafe:
         if "vaccine" not in visitor:
             raise NotVaccinatedError("Visitor is not vaccinated.")
 
+        if not isinstance(visitor["vaccine"], dict):
+            raise OutdatedVaccineError("Vaccine data is invalid.")
+
         if "expiration_date" not in visitor["vaccine"]:
             raise OutdatedVaccineError("Vaccine expiration date is missing.")
 
